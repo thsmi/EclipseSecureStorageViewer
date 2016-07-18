@@ -35,8 +35,8 @@ public class EclipseSecureStorageViewer {
 
 	public static void main(String[] args) {
 		
-		if (args.length == 0) {
-			System.out.println(" You need to specify the path to the secure container as parameter\n");
+		if (args.length != 2) {
+			System.out.println("You need to specify the path to the secure container as parameter as well as you master password\n");
 			return;
 		}
 		
@@ -46,7 +46,7 @@ public class EclipseSecureStorageViewer {
 
 			System.out.println("Entries stored in " + filename + "\n");
 
-			ISecurePreferences root = (new SecurePreferencesRoot("jambit")).load(filename);
+			ISecurePreferences root = (new SecurePreferencesRoot(args[1])).load(filename);
 
 			listChildren(root, "");
 
